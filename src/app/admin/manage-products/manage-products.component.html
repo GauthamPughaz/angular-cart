@@ -1,0 +1,59 @@
+<div>
+    <input #search type="text" (keyup)="filter(search.value)" class="form-control search-bar" placeholder="Search product...">
+</div>
+<p>
+    <button class="btn btn-primary" routerLink="/admin/products/new">New product</button>
+</p>
+<div class="col-md-8">
+    <data-table 
+    [items]="items"
+    [itemCount]="itemCount"
+    (reload)="reloadItems($event)">
+
+    <data-table-column
+        [property]="'val.title'"
+        [header]="'Title'"
+        [sortable]="true"
+        [resizable]="true">
+        <ng-template #dataTableCell let-item="item">
+            {{ item.val.title }}
+        </ng-template>
+    </data-table-column>
+
+    <data-table-column
+        [property]="'val.price'"
+        [header]="'Price'"
+        [sortable]="true"
+        [resizable]="true">
+        <ng-template #dataTableCell let-item="item">
+            {{ item.val.price | currency:'USD':true }}
+        </ng-template>
+    </data-table-column>
+
+    <data-table-column
+        [property]="'key'">
+        <ng-template #dataTableCell let-item="item">
+            <a [routerLink]="['/admin/products/', item.key]">Edit</a>
+        </ng-template>
+    </data-table-column>
+
+</data-table>
+</div>
+<!-- <table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Price in dollars</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of filteredProducts">
+            <td>{{ p.val.title }}</td>
+            <td>{{ p.val.price }}</td>
+            <td>
+                <a [routerLink]="['/admin/products/', p.key]">Edit</a>
+            </td>
+        </tr>
+    </tbody>
+</table> -->
