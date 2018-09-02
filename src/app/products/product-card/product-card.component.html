@@ -4,7 +4,18 @@
       <h5 class="card-title">{{ product.val.title }}</h5>
       <p class="card-text">{{ product.val.price | currency:'USD':true }}</p>
     </div>
-    <div class="card-footer">
-      <button *ngIf="showActions" (click)="addToCart(product)" class="btn btn-primary btn-block">Add to cart</button>
+    <div class="card-footer" *ngIf="showActions">
+      <button *ngIf="getQuantity() == 0; else showCartNumber" (click)="addToCart()" class="btn btn-secondary btn-block">Add to cart</button>
+      <ng-template #showCartNumber>
+        <div class="row no-gutters">
+          <div class="col-2">
+            <button class="btn btn-secondary btn-block" (click)="removeFromCart()">-</button>
+          </div>
+          <div class="col-8 quantity">{{ getQuantity() + " in cart"}}</div>
+          <div class="col-2">
+            <button class="btn btn-secondary btn-block" (click)="addToCart()">+</button>
+          </div>
+        </div>
+      </ng-template>
     </div>
   </div>
