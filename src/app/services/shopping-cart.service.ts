@@ -52,8 +52,12 @@ export class ShoppingCartService {
     const item_ = this.getItem(cartId, product.key);
     item_.valueChanges().pipe(
       take(1)
-    ).subscribe((item: {product: {}, quantity: number}) => {
-      item_.set({product: product, quantity: (item) ? item.quantity + change : 1});
+    ).subscribe((item: any) => {
+      item_.set({ title: product.title || product.val.title,
+                  price: product.price || product.val.price,
+                  imageUrl: product.imageUrl || product.val.imageUrl,
+                  quantity: (item) ? item.quantity + change : 1
+      });
     });
   }
 }
