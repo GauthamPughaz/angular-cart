@@ -9,10 +9,7 @@ export class ShoppingCart {
 
         for (const itemId in shoppingCartItems) {
             const item = shoppingCartItems[itemId];
-            const x = new ShoppingCartItem();
-            Object.assign(x, item);
-            x.key = itemId;
-            this.items.push(x);
+            this.items.push(new ShoppingCartItem({...item, key: itemId}));
         }
     }
 
