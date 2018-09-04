@@ -58,11 +58,17 @@ export class ShoppingCartService {
     item_.valueChanges().pipe(
       take(1)
     ).subscribe((item: any) => {
-      item_.set({ title: product.title || product.val.title,
-                  price: product.price || product.val.price,
-                  imageUrl: product.imageUrl || product.val.imageUrl,
-                  quantity: (item) ? item.quantity + change : 1
-      });
+      const quantity = (item) ? item.quantity + change : 1;
+      if (quantity === 0) {
+        item_.remove();
+      } else {
+        item_.set({
+          title: product.title || product.val.title,
+          price: product.price || product.val.price,
+          imageUrl: product.imageUrl || product.val.imageUrl,
+          quantity: quantity
+        });
+      }
     });
   }
 }
