@@ -29,6 +29,8 @@ import { CategoryService } from './services/category.service';
 import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 import { ProductCardComponent } from './products/product-card/product-card.component';
 import { ProductQuantityComponent } from './products/product-quantity/product-quantity.component';
+import { ShoppingCartService } from './services/shopping-cart.service';
+import { OrderService } from './services/order.service';
 
 @NgModule({
   declarations: [
@@ -78,7 +80,9 @@ import { ProductQuantityComponent } from './products/product-quantity/product-qu
     AngularFireAuth,
     AuthGuard,
     AdminGuard,
-    CategoryService
+    CategoryService,
+    ShoppingCartService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })

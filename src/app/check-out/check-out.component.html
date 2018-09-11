@@ -5,7 +5,7 @@
 </div>
 <div class="row">
   <div class="col-md-6">
-    <form (submit)="console.log(f.value)" #f="ngForm">
+    <form (submit)="placeOrder()" #f="ngForm">
       <div class="form-group">
         <label for="customerName">Name</label>
         <input #name="ngModel" [(ngModel)]="checkoutInformation.name" name="customerName" type="text" class="form-control" placeholder="name" required>
