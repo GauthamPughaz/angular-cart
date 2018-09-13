@@ -3,31 +3,9 @@
     <h1>Shipping</h1>
   </div>
 </div>
-<div class="row">
+<div class="row" *ngIf="cart$ | async as cart">
   <div class="col-md-4">
-    <form (submit)="placeOrder()" #f="ngForm">
-      <div class="form-group">
-        <label for="customerName">Name</label>
-        <input #name="ngModel" [(ngModel)]="checkoutInformation.name" name="customerName" type="text" class="form-control" placeholder="name" required>
-        <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
-          Name is required
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="addressLine1">Address</label>
-        <input #addressLine1="ngModel" [(ngModel)]="checkoutInformation.addressLine1" name="addressLine1" type="text" class="form-control" placeholder="line1" required>
-        <div class="alert alert-danger" *ngIf="addressLine1.touched && addressLine1.invalid"> Address line 1 is required</div>
-      </div>
-      <div class="form-group">
-        <input #addressLine2="ngModel"  [(ngModel)]="checkoutInformation.addressLine2" name="addressLine2" type="text" placeholder="line2" class="form-control">
-      </div>
-      <div class="form-group">
-        <label for="city">City</label>
-        <input #city="ngModel" name="city" [(ngModel)]="checkoutInformation.city" type="text" class="form-control" placeholder="city" required>
-        <div class="alert alert-danger" *ngIf="city.touched && city.invalid">City is required</div>
-      </div>
-      <button type="submit" class="btn btn-primary">Place order</button>
-    </form>
+    <app-shipping-form [shoppingCart]='cart'></app-shipping-form>
   </div>
   <div class="col-md-4">
     <app-order-summary [shoppingCart]='cart'></app-order-summary>

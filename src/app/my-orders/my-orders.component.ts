@@ -1,3 +1,5 @@
+import { OrderService } from './../services/order.service';
+import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-orders.component.css']
 })
 export class MyOrdersComponent implements OnInit {
+  userId: String;
+  orders$;
 
-  constructor() { }
+  constructor(private authService: AuthService, private orderService: OrderService) { }
 
   ngOnInit() {
+    this.authService.user$.subscribe(user => {
+      this.orders$ = this.orderService.getOrdersByUserId(user.uid);
+    });
   }
 
 }
