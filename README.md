@@ -1,2 +1,2 @@
 # angular-cart
-A simple Angular 4 shopping cart app powered by firebase.
+A simple Angular 4 shopping cart application example powered by firebase.
