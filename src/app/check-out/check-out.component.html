@@ -4,7 +4,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-4">
     <form (submit)="placeOrder()" #f="ngForm">
       <div class="form-group">
         <label for="customerName">Name</label>
@@ -28,5 +28,8 @@
       </div>
       <button type="submit" class="btn btn-primary">Place order</button>
     </form>
+  </div>
+  <div class="col-md-4">
+    <app-order-summary [shoppingCart]='cart'></app-order-summary>
   </div>
 </div>
