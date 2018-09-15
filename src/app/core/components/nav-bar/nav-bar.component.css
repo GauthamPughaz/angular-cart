@@ -1,0 +1,7 @@
+.nav-link, .dropdown-item {
+    cursor: pointer;
+}
+
+nav {
+    padding: .5rem 50px;
+}
